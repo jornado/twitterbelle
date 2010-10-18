@@ -1,0 +1,934 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html manifest="cache-manifest.manifest">
+<!-- <html> -->
+<head>
+    <title>Emojiboard</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+	<meta name="viewport" content="width=320; initial-scale=1.0; maximum-scale=1; user-scalable=0;" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <link rel="apple-touch-icon" href="app-icon.png" />
+
+    <link rel="apple-touch-startup-image" href="default.png" />
+    
+    <style type="text/css">
+    
+    	html {
+    		background: black;
+    	}    	
+    
+		body {
+			background: black;
+			color: #222;
+			padding: 0;
+			margin: 0;
+			width: 100%;
+			height: 3500px;
+			max-height: 3500px;
+
+		
+		    font: 16px/20px Helvetica, sans-serif;	
+			-webkit-text-size-adjust: none;
+			
+			-webkit-tap-highlight-color: transparent;
+		}
+		a {
+			color: inherit;
+			text-decoration: underline;
+		}
+
+		#main {
+			
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 3500px;
+			max-height: 3500px;
+			padding: 0;
+			margin: 0;
+			overflow-y: hidden;
+			background: black;
+		}
+		
+		#emojiboard {
+			
+			width: 100%;
+			height: 3500px;
+			max-height: 3500px;
+			left: 0px;
+			top: 0px;
+
+		
+			background: rgb(120,120,120) -webkit-gradient(linear, center top, center bottom, from(rgba(255,255,255,.6)), to(rgba(255,255,255,0)));
+			overflow: hidden;
+			height: 3500px;
+			
+			-webkit-border-radius: 11px;
+			
+/* 			display: none;			 */
+		}
+		
+		#installation {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 3500px;
+			max-height: 3500px;
+
+ 			background: rgb(60,60,60) -webkit-gradient(linear, center top, center bottom, from(rgba(255,255,255,.2)), color-stop(.3, rgba(255,255,255,0)), to(rgba(255,255,255,0)));
+ 			color: rgba(255,255,255,.6);
+			min-height: 3500px;
+			
+			text-shadow: rgba(0,0,0,.7) 0px -1px 0px;
+			
+			display: none;
+		}
+		
+		#desktop {
+			position: absolute;
+			top: 0;
+			left: 0;		
+			color: white;
+			padding: 30px;
+			
+			display: none;
+		}
+		#desktop p {
+			width: 400px;
+		}
+		
+		#arrow {
+			width: 100%;
+			height: 30px;
+			position: absolute;
+			bottom: 120px;
+			left: 0;
+			background: -webkit-canvas(arrow) no-repeat top center;
+		}
+		
+		#info {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+
+ 			background: rgb(60,60,60) -webkit-gradient(linear, center top, center bottom, from(rgba(255,255,255,.2)), color-stop(.3, rgba(255,255,255,0)), to(rgba(255,255,255,0)));
+ 			color: rgba(255,255,255,.6);
+			min-height: 3500px;		
+			-webkit-border-radius: 11px;
+			
+			text-shadow: rgba(0,0,0,.7) 0px -1px 0px;
+			
+			-webkit-transform: translateY(3500px);
+			-webkit-transition: -webkit-transform .3s ease-in-out;
+
+			/* display: none */;			
+		}
+		
+		#info h1, #info p, #installation p {
+			padding: 0px 15px;
+		}
+		#info .button {
+			position: absolute;
+			right: 8px;
+			top: 8px;
+		}
+		h1 {
+			font-size: 18px;
+			line-height: 22px;
+			margin-top: 17px;
+			color: rgba(255,255,255,.8);
+		}
+		
+		.button {
+			width: content;
+			float: right;
+			clear: none;
+			height: 12px;
+			padding: 8px 10px 7px 10px;
+			
+			background: rgb(55,111,224) -webkit-gradient(linear, left top, left bottom, from(rgb(120,157,234)), color-stop(.49, rgb(55,111,224)), color-stop(.5, rgb(34,96,221)), to(rgb(49,99,201)));
+			color: white;
+			
+			font: bold 12px/12px Helvetica;
+			text-shadow: rgba(0,0,0,.4) 0 -1px 0;
+			-webkit-border-radius: 5px;
+			-webkit-box-shadow: rgba(255,255,255,.2) 0 1px 0;
+			border: 1px solid rgb(0,33,108);
+			border-left-color:rgb(25,71,178);
+			border-right-color:rgb(25,71,178);
+			border-bottom-color:rgb(25,71,178);			
+		}
+		
+		.navbar {
+			background: rgba(0,0,0,.2) -webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255,.34)), color-stop(.49, rgba(255,255,255,0)), color-stop(.5, rgba(0,0,0,.1)), to(rgba(0,0,0,.1)));
+			height: 30px;
+			padding-top: 12px;
+			border-top: 1px solid rgba(255,255,255,.6);
+			border-bottom: 1px solid rgba(0,0,0,.6);
+			-webkit-border-top-left-radius: 11px;
+			-webkit-border-top-right-radius: 11px;
+			-webkit-box-shadow: rgba(255,255,255,.2) 0 1px 0;
+
+			text-align: center;
+			color: white;
+			text-shadow: rgba(0,0,0,.6) 0 -1px 0;
+			font-weight: bold;
+			font-size: 20px;
+			
+			-webkit-user-select: none;			
+		}
+		
+		.infoBtn {
+			position: absolute;			
+			right: 0px;
+			top: 0px;
+			width: 44px;
+			height: 31px;
+			padding-left: 0px;
+			padding-top: 13px;
+
+			background: -webkit-canvas(infoCircle) no-repeat center center;
+			color: rgba(0,0,0,.7);
+			font: italic bold 16px/18px Georgia, serif;
+			text-align: center;
+			text-shadow: rgb(255,255,255) 0 0 1px;
+
+/* 			-webkit-transition: opacity .5s ease-out; */
+/* 			-webkit-animation-delay: .3s; */
+/* 			opacity: 0;	 */
+		}
+		
+		#instructions {
+			position: absolute;
+			bottom: 337px;
+			width: 100%;
+		
+			text-align: center;
+			text-shadow: rgba(255,255,255,.6) 0 1px 0;	
+			color: rgba(0,0,0,.35);
+		
+/* 			-webkit-transition: opacity .5s ease-out; */
+/* 			-webkit-animation-delay: .3s; */
+/* 			opacity: 0;	 */
+		}	
+		input {
+			font-size: 16px;
+			width: 280px;
+			padding: 5px 5px;
+			margin-top: 10px;
+			height: 20px;
+			color: black;
+			background: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,.4)), color-stop(.2, rgba(0,0,0,.2)), to(rgba(0,0,0,.2)));
+			border: 1px solid rgba(255,255,255,.7);
+		}
+		input.disabled {
+			font-size: 11px;
+			text-align: center;
+			color: rgba(0,0,0,.5);
+		}
+				
+		#keyboard {
+			width: 100%;
+			height: 3500px; /* number of rows * 54 - 11 */
+			max-height: 3500px;
+
+			position: absolute;
+			bottom: 0;
+			overflow: hidden;
+		
+			-webkit-transform: translateY(313px);
+			-webkit-transition: -webkit-transform .3s ease-out;
+		}
+		
+		#keyboard div { /* single key */
+			float: left;
+			clear: none;
+			width: 31px;
+			height: 29px;
+			padding-top: 9px;
+			padding-left: 1px;
+			margin: 0 3px 14px 3px;
+			
+			font-size: 25px;
+			line-height: 18px;
+			text-align: center;
+			text-shadow: rgba(255,255,255,.8) 0 1px 0;
+
+			border: 1px solid rgba(0,0,0,.5);
+			-webkit-border-radius: 4px;
+		
+			color: black;	
+			background: rgba(255,255,255,.3) -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,.2)), color-stop(.1, rgba(255,255,255,.2)),  to(rgba(255,255,255,.3)));
+			-webkit-box-shadow: rgba(255,255,255,.4) 0 1px 1px;
+
+
+		}
+		#keyboard p {
+			padding: 0;
+			margin: 0;
+		}
+		/* Keys adjusted for height */
+		#keyboard div.b1 {
+			font-size: 28px;
+			line-height: 18px;
+			padding-top: 8px !important;
+			height: 30px;
+		}
+		#keyboard div.b2 {
+			font-size: 30px;
+			line-height: 18px;
+			padding-top: 7px !important;
+			height: 31px;
+		}
+		#keyboard div.b3 {
+			font-size: 32px;
+			line-height: 18px;
+			padding-top: 6px !important;
+			height: 32px;
+		}
+		/* Keys adjusted for width */
+		#keyboard div.r2 {
+			padding-left: 2px;
+			width: 30px;
+		}
+		#keyboard div.r3 {
+			padding-left: 3px;
+			width: 29px;
+		}
+		
+		.footer {
+			font-size: 12px;
+			text-align: center;
+			opacity: .6;
+		}
+    
+    </style>
+    
+	<script type="text/javascript">
+
+	// Listen for pasteboard events	
+	document.oncopy = glyphCopy;
+	
+    // Page Load setup
+    addEventListener("load", function()
+	{
+		// Browser check
+		
+		// Look for iPhone OS
+		if (navigator.appVersion.indexOf('iPhone OS ') < 0)
+		{
+			document.getElementById('desktop').style.display = 'block';
+			document.getElementById('emojiboard').style.display = 'none';
+			document.getElementById('info').style.display = 'none';
+			document.getElementById('installation').style.display = 'none';
+		}
+		else
+		{
+			// We have an iPhone!
+			// Look for iPhone OS 3 or higher
+			if (parseInt(navigator.appVersion.substring(navigator.appVersion.indexOf('iPhone OS ') + 10, navigator.appVersion.indexOf('iPhone OS ') + 11)) < 3)
+				alert('Psst.. This works on iPhone OS 3.0 and higher only! No funny stuff!');
+	
+			if (!window.navigator.standalone)
+			{
+				// not running as an installed app					
+				document.getElementById('installation').style.display = 'block';
+				drawArrow();
+			}
+			else {
+	/* 			document.getElementById('info').style.display = 'block'; */
+	/* 			document.getElementById('emojiboard').style.display = 'block'; */
+	
+				drawInfoCircle();
+		
+				// animate elements in	
+	/* 			document.getElementById('infoBtn').style.opacity = 1; */
+	/* 			document.getElementById('instructions').style.opacity = 1; */
+				document.getElementById('keyboard').style.webkitTransform = 'translateY(3200px)';
+			}
+		}	
+	}, false);
+		
+	function showInfo()
+	{
+		element = document.getElementById('card');
+		element.className = (element.className == 'card') ? 'card showInfoped' : 'card';
+	}
+	
+	function drawInfoCircle() {
+		var ctx = document.getCSSCanvasContext("2d", "infoCircle", 17, 18);
+		
+		// shadow circle
+		ctx.fillStyle = "rgba(0,0,0,.6)";
+		ctx.beginPath();
+		ctx.arc(8.5, 8.5, 8.5, 8.5, 0, Math.PI*2, true); 
+		ctx.closePath();
+		ctx.fill();
+		// white circle
+		ctx.fillStyle = "rgb(255,255,255)";		
+		ctx.beginPath();
+		ctx.arc(8.5, 9.5, 8.5, 8.5, 0, Math.PI*2, true); 
+		ctx.closePath();
+		ctx.fill();
+	}
+	
+	function drawArrow()
+	{
+		var ctx = document.getCSSCanvasContext("2d", "arrow", 30, 30);
+		
+		ctx.fillStyle = "rgb(255,255,255)";
+		ctx.beginPath();
+		ctx.moveTo(0, 0);
+		ctx.lineTo(30, 0);
+		ctx.lineTo(15,23);
+		ctx.closePath();
+		ctx.fill();
+	}
+	
+	lastKeyTapped = '';
+	
+	// We can't get the pasteboard contents (security issue) so we'll get the value of the last tapped key
+	function glyphCopy()
+	{	
+		clearScratchboardIfNeeded();
+		document.getElementById('scratchboard').value += lastKeyTapped;
+/* 		console.log('copied ' + lastKeyTapped);		 */
+	}
+	
+	function clearScratchboardIfNeeded()
+	{
+		if (document.getElementById('scratchboard').value=='This is your scratchboard for copying multiple glyphs.')
+		{
+			document.getElementById('scratchboard').value = '';
+			document.getElementById('scratchboard').className = '';
+		}
+	}
+
+	</script>
+    
+</head>
+<body>
+
+	<div id="main">
+		<div id="emojiboard">
+		
+			<div class="navbar">
+
+				Emojiboard
+				<div class="infoBtn" id="infoBtn" onclick="info.style.webkitTransform='translateY(0px)';">i</div>
+			</div>
+		
+			<div id="instructions">
+				<span style="-webkit-user-select: none;	">Tap + hold to copy.</span>
+				<br />
+				<input id="scratchboard" type="text" class="disabled" value="This is your scratchboard for copying multiple glyphs." onclick="clearScratchboardIfNeeded()" />
+			</div>
+
+	
+			<div id="keyboard">
+				<div>
+
+				</div>
+				
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p>©</p></div>
+				<div><p>®</p></div>
+				<div><p>™</p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+				<div><p></p></div>
+						
+			</div><!-- keyboard -->				
+		</div><!-- emojiboard -->
+		
+		<div id="info">
+		
+			<div class="navbar">
+				What's this?
+				<div class="button" onclick="info.style.webkitTransform='translateY(3500px)';">Done</div>
+
+			</div>
+			<p>emojiboard is an alternate keyboard of symbols which are supported by the iPhone and Mac OS X, but aren't available on the standard keyboard.</p>
+			<h1>How's it work?</h1>
+			<p>Tap and hold on a symbol to bring up the standard pasteboard interface. To copy more than one glyph at a time, paste them into the scratchboard box, then copy its contents.</p>
+			<h1>Why not just tap a key to copy?</h1>
+			<p>This is not supported by WebKit, and it will probably never be, for security reasons. Bummer!</p>
+
+			<p class="footer">Emojiboard by <a href="http://mrgan.com">Neven Mrgan</a></p>
+		</div><!-- info -->
+		
+		<div id="installation">
+			<p style="line-height: 22px; text-align: center; margin-top: 100px">
+				To install Emojiboard, tap the <span style="color: white; font-size: 20px; line-height: 20px">+</span> button below and choose <span style="color: white">Add to Home Screen</span>.
+			</p>
+
+			<p style="font-size: 13px; line-height: 17px; text-align: center;">
+				Once installed, the app will be automatically updated if there are changes. Sweet!
+			</p>
+			
+			<div id="arrow"></div>
+		</div>
+		
+		<div id="desktop">
+			<p>
+				emojiboard is an iPhone web app. Please visit this page on an iPhone or iPod touch to install Emojiboard. Later!
+			</p>
+			<p>
+
+				&mdash;<a href="http://mrgan.com">Neven</a>
+			</p>
+		</div>
+	
+	</div><!-- main -->
+
+
+
+</body>
+</html>
+
+

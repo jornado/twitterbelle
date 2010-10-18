@@ -1,0 +1,7 @@
+
+<div><center>
+	<form id="userform"> 
+	    <input type="text" id="screen_name" name="screen_name" value="{% if screen_name %}{{ screen_name|escape }}{% else %}poeks{% endif %}" onclick="this.value='';" class="bigform alt" />
+		&nbsp;&nbsp;<input type="submit" value="Do It!"  class="bigform alt" onclick="window.location='/'+document.getElementById('screen_name').value+'/';return false;"/> 
+	</form>
+</center></div>

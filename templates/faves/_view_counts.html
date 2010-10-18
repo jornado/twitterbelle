@@ -1,0 +1,35 @@
+<div class="span-24 last">&nbsp;</div>
+<div class="span-4"> &nbsp;</div>
+<div class="box span-14 last" style="padding: 30px">
+	<center>
+		<h3 class="alt">Most Searched Users on Twitterbelle</h3>
+	</center>
+		
+		{% for view in views %}
+
+			<script>
+
+			$(document).ready(function(){
+
+				//$.jTwitter('{{ view.screen_name }}', function(userdata){
+				//	console.log(userdata);
+				//	$('#profile input.url').val(userdata.url);
+				//	$('#{{ view.screen_name }}_avatar').html('<img src="'
+				//	       + userdata.profile_image_url + '" />');
+				//});
+			});
+
+
+		  </script>
+
+
+			<div class="span-1" id="{{ view.screen_name }}_avatar">&nbsp;</div>
+			<div class="span-14 last" >
+				{{ forloop.counter }}. <a href="/{{ view.screen_name }}/">{{ view.screen_name }}</a><!-- ({{ view.view_count }}) -->
+			</div>
+		{% endfor %}
+		
+
+</div>
+
+<div>&nbsp;</div>

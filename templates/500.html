@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Twitterbelle</title>
+
+	<link rel="shortcut icon" href="/static/images/favicon.ico">
+  <!-- Framework CSS -->
+  <link rel="stylesheet" href="/static/css/screen.css" type="text/css" media="screen, projection">
+  <link rel="stylesheet" href="/static/css/print.css" type="text/css" media="print">
+
+<!-- Import fancy-type plugin for the sample page. -->
+	<link rel="stylesheet" href="/static/css/plugins/fancy-type/screen.css" type="text/css" media="screen, projection">
+
+  <!--[if lt IE 8]><link rel="stylesheet" href="/static/css/ie.css" type="text/css" media="screen, projection"><![endif]-->
+	<style type="text/css" media="screen">
+		a { 
+			color: #502d00;
+		}
+		a:visited { 
+			color: #7b4600;
+		}
+		a:hover { 
+			color: #7b4600;
+		}
+		
+		p, table, hr, .box { margin-bottom:25px; }
+		.box p { margin-bottom:10px; }
+		
+		.bigform {
+			border: 1px solid #000;
+			font-size: 24px;
+			background-color: #fff;
+		}
+		#title {
+			padding: 10px;
+			color:#3276A7;
+			font-size: 48px;
+		}
+		.even {
+			background-color: #ddd;
+		}
+		.odd {
+			background-color: #fff;
+		}
+		.fave_list {
+			line-height:53px; 
+			margin:0px; 
+			padding:10px;
+		}
+		.fave_list_icon {
+			margin:0px; 
+			padding:10px;
+		}
+		.title_color {
+			color:#3276A7;
+		}
+	</style>
+	
+	<link type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.1/themes/base/ui.all.css" rel="stylesheet" />
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+  	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js"></script>
+
+  	<script type="text/javascript" src="/static/js/jquery.jtwitter.min.js"></script>
+	<script type="text/javascript" src="/static/js/jquery.progressbar.min.js"></script>
+    <script type="text/javascript" src="/static/js/faves.js"></script>
+	
+	
+	
+	
+	
+</head>
+<body>
+
+  <div class="container">  
+	<div id="title" class="alt">
+    <center>Twitterbelle </center>
+
+	
+    </div>
+    <hr/>
+
+<center><h2 class="alt">Twitterbelle analyzes your recent Twitter favorites and tells you who you favorite the most.</h2></center>
+
+	
+
+<br/>
+
+	<div>
+	
+
+<center><h2 class="alt title_color">Oops! Something went wrong :(</h2></center>
+
+<div><center>
+	<form id="userform"> 
+	    <input type="text" id="screen_name" name="screen_name" value="poeks" onclick="this.value='';" class="bigform alt" />
+		&nbsp;&nbsp;<input type="submit" value="Do It!"  class="bigform alt" onclick="window.location='/'+document.getElementById('screen_name').value+'/';return false;"/> 
+	</form>
+</center></div>
+
+
+	
+		<div style="padding-top: 50px;">
+	<hr/>
+	<center><span class="small">
+
+		&copy; 2009 <a href="http://twitter.com/poeks">Poeks</a> | <a href="/">Home</a> | <a href="/about">About</a> | <a href="/contact">Contact</a>
+	</span></center>
+</div>
+
+	</div>
+	
+	
+	
+  </div>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-9166271-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+</body>
+</html>

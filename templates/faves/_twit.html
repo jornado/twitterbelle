@@ -1,0 +1,24 @@
+<div class="span-7" style="padding-bottom: 10px">
+	<a href="http://twitter.com/{{ screen_name }}"><img src="{{ twit.profile_image_url }}" border="0" height="73" width="73"></a>
+</div>
+<div class="span-7">
+	<h3 class="alt">
+		{% if cache_age %}
+			This document is cached.
+		{% endif %}
+		
+		<br/>User: <a href="http://twitter.com/{{ screen_name }}">{{ twit.screen_name }}</a>
+		<br/>Bio: {{ twit.description }}
+		
+	</h3>
+</div>
+<div class="span-7 last">
+	<h3 class="alt">
+		{% if cache_age %}
+			<a href="/delete_from_cache/{{ screen_name }}/">Click here to refresh faves</a>
+		{% endif %}
+		<br/>Location: {{ twit.location }}
+		<br/>Url: <a href="{{ twit.url }}">{{ twit.url }}</a>
+		
+	</h3>
+</div>
